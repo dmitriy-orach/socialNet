@@ -1,0 +1,161 @@
+<div class="container">
+    <h1 class="header-page">Registration</h1>
+    <div class="register row">
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="form-control">
+                <label for="name">Name:</label>
+                <input 
+                    id="name"
+                    type="text"
+                    placeholder="Name"
+                    formControlName="name"
+                >
+                <div
+                    *ngIf="nameControl.invalid && nameControl.touched" 
+                    class="validation"
+                >
+                    <small *ngIf="!nameControl.value">Name field is required</small>
+                    <small *ngIf="nameControl.invalid">The name must be at least 3 characters and no more than 20</small>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="patronymic">Patronymic:</label>
+                <input 
+                    id="patronymic"
+                    type="text"
+                    placeholder="Patronymic"
+                    formControlName="patronymic"
+                >
+                <div
+                    *ngIf="patronymicControl.touched" 
+                    class="validation"
+                >
+                    <small *ngIf="patronymicControl.invalid">The patronymic must be at least 3 characters and no more than 50</small>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="country">Country:</label>
+                <input 
+                    id="country"
+                    type="text"
+                    placeholder="Country"
+                    formControlName="country"
+                >
+                <div
+                    *ngIf="countryControl.touched" 
+                    class="validation"
+                >
+                    <small *ngIf="countryControl.invalid">Write the country where you are from.</small>
+                </div>
+            </div>
+            <div *ngIf="citiesData" class="form-control">
+                <label for="cityes">Select city:</label>
+                <select 
+                    name="cityes"  
+                    id="cityes"
+                    formControlName="city"
+                >
+                    <option selected="selected" value="">
+                        Select city
+                    </option>
+                    <option *ngFor="let city of citiesData" value="{{city.city_id}}">
+                        {{city.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="date_birth">Date of Birth:</label>
+                <input type="date"
+                    name="dateBirth"
+                    formControlName="dateBirth"
+                    id="date_birth"
+                >
+                <div
+                    *ngIf="dateBirthControl.touched" 
+                    class="validation"
+                >   
+                    <small *ngIf="!dateBirthControl.value">Date of birth field is required</small>
+                    <small *ngIf="dateBirthControl.errors?.dateIsLessThanAcceptable">Date of birth cannot be later than the start date of shooting</small>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="dates_hooting_start">Shooting start date:</label>
+                <input type="date"
+                    name="dateShootingStart"
+                    formControlName="dateShootingStart"
+                    id="dates_hooting_start"
+                >
+            </div>
+            <div class="form-control">
+                <label for="camera">Camera:</label>
+                <input type="text"
+                    name="Camera"
+                    formControlName="camera"
+                    id="camera"
+                >
+                <div
+                    *ngIf="cameraControl.invalid" 
+                    class="validation"
+                >   
+                    <small *ngIf="!cameraControl.value">Write the name of the camera</small>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="lens">Select lens:</label>
+                <select 
+                    name="lens"  
+                    id="lens"
+                    formControlName="lens"
+                >
+                    <option selected="selected" value="">
+                        Select lens
+                    </option>
+                    <option value="1">
+                        Адаптеры EOS R
+                    </option>
+                    <option value="2">
+                        EF-S
+                    </option>
+                    <option value="3">
+                        EF-M
+                    </option>
+                    <option value="4">
+                        Объективы EF с фиксированным фокусным расстоянием
+                    </option>
+                    <option value="5">
+                        Зум-объективы EF
+                    </option>
+                    <option value="6">
+                        Макро
+                    </option>
+                    <option value="7">
+                        Широкоугольные объективы
+                    </option>
+                    <option value="8">
+                        Телеобъективы
+                    </option>
+                    <option value="9">
+                        С механизмом наклона и сдвига
+                    </option>
+                    <option value="10">
+                        Экстендеры
+                    </option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="about_yourself">About yourself:</label>
+                <textarea name="aboutMyself" id="about_yourself" formControlName="aboutMyself"
+                ></textarea>
+                <div
+                    *ngIf="aboutMyselfControl.invalid" 
+                    class="validation"
+                >   
+                    <small>Maximum allowed character value 250</small>
+                </div>
+            </div>
+            <div class="btn-block btn">
+                <button class="btn-send" type="submit" [disabled]="registerForm.invalid">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
