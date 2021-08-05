@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
   public citiesData: any;
+  public citySelected: boolean = false;
+  public lensSelected: boolean = false;
 
   constructor( 
     private router: Router,
@@ -51,6 +53,11 @@ export class RegisterComponent implements OnInit {
       .subscribe((data: any) => this.citiesData = data.city.reduce((a: City[], b: City[]) => a.concat(b), []));
 
     this.cityControl.valueChanges.subscribe(() => {
+      if(this.cityControl.value) {
+        this.citySelected = true;
+      } else {
+        this.citySelected = false;
+      }
       this.countryControl.setValidators([Validators.required]);
       this.countryControl.updateValueAndValidity({ emitEvent: false });
     })
@@ -60,6 +67,11 @@ export class RegisterComponent implements OnInit {
     })
 
     this.lensControl.valueChanges.subscribe(() => {
+      if(this.lensControl.value) {
+        this.lensSelected = true;
+      } else {
+        this.lensSelected = false;
+      }
       this.cameraControl.setValidators([Validators.required]);
       this.cameraControl.updateValueAndValidity({ emitEvent: false });
     })

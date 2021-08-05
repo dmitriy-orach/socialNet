@@ -3,7 +3,7 @@
     <div class="register row">
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="form-control">
-                <label for="name">Name:</label>
+                <label class="required" for="name">Name:</label>
                 <input 
                     id="name"
                     type="text"
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="form-control">
-                <label for="country">Country:</label>
+                <label [ngClass]="{required: citySelected}" for="country">Country:</label>
                 <input 
                     id="country"
                     type="text"
@@ -64,7 +64,7 @@
                 </select>
             </div>
             <div class="form-control">
-                <label for="date_birth">Date of Birth:</label>
+                <label class="required" for="date_birth">Date of Birth:</label>
                 <input type="date"
                     name="dateBirth"
                     formControlName="dateBirth"
@@ -87,7 +87,7 @@
                 >
             </div>
             <div class="form-control">
-                <label for="camera">Camera:</label>
+                <label [ngClass]="{required: lensSelected}" for="camera">Camera:</label>
                 <input type="text"
                     name="Camera"
                     formControlName="camera"

@@ -60,3 +60,9 @@ button:disabled {
     cursor: no-drop;
     opacity: .2;
 }
+
+label.required::before {
+    content: '*';
+    color: rgb(231, 13, 13);
+    margin-right: 4px;
+}
