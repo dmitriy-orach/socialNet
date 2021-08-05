@@ -42,10 +42,10 @@
                     formControlName="country"
                 >
                 <div
-                    *ngIf="countryControl.touched" 
+                    *ngIf="countryControl.invalid" 
                     class="validation"
                 >
-                    <small *ngIf="countryControl.invalid">Write the country where you are from.</small>
+                    <small *ngIf="cityControl.value">Write the country where you are from.</small>
                 </div>
             </div>
             <div *ngIf="citiesData" class="form-control">
